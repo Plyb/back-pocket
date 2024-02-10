@@ -43,7 +43,9 @@ export default {
 
       const recipes = [...el.getElementsByTagName('a')]
         .filter(aTag => aTag.pathname?.includes('.md'))
-        .map(aTag => aTag.pathname);
+        .map(aTag => location.hostname === 'localhost'
+          ? aTag.pathname
+          : '/recipes/' + aTag.pathname);
       this.recipes = recipes;
     },
     getDisplayName(recipe) {
